@@ -1,0 +1,16 @@
+<h3>Update details of <%=@store.name()%> </h3>
+
+<form action="/stores" method="post">
+    <input name="_method" value="patch" type="hidden">
+    <input id="self_id" name="self_id" type="hidden" value="<%=@store.id%>">
+    <label for="name">Name</label>
+    <input id="name" name="name" type="string">
+    <br>
+    <label for="address">Address</label>
+    <input id="address" name="address" type="string">
+    <br>
+    <label for="phone">Phone</label>
+    <input id="phone" name="phone" type="number">
+    <br>
+    <button type="submit" class="btn btn-danger btn-xs">Update</button>
+</form>

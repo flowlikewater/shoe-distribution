@@ -1,0 +1,29 @@
+<h3><%=@brand.name()%><h3>
+
+<h5><%=@brand.name()%> is available in the following stores:</h5>
+
+<ul>
+  <% @brand.stores.each() do |store|%>
+    <a href='/stores/<%=store.id%>'><li><%=store.name%></li></a>
+  <% end %>
+</ul>
+
+<hr>
+
+<% if @store.length>0 %>
+  <div class="text-left">
+    <h3>Add an existing store to <%=@brand.name()%></h3>
+    <form action='/stores2' method='post'>
+      <select id='store_id' name='store_id' type='text'>
+        <% @store.each() do |store| %>
+          <option value="<%= store.id()%>"> <%= store.name() %> </option>
+        <% end %>
+      </select>
+      <input type='hidden' name='self_id' id='self_id' value='<%=@brand.id%>'>
+      <button class='btn btn-info btn-cons' action='submit'>Submit</button>
+    </form>
+  </div>
+<% else %>
+  <h3><a href='/'>Add a store</a></h3>
+<% end %>
+<hr>

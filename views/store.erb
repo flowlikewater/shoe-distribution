@@ -1,0 +1,54 @@
+<h3><%=@store.name()%><h3>
+<h5>Address: <%=@store.address%></h5>
+<h5>Phone: <%=@store.phone%></h5>
+
+<hr>
+
+<div class='container row'>
+  <div class='col-md-6'>
+    <a href='/stores/<%=@store.id%>/update'><h3>Update store details</h3></a>
+  </div>
+  <div class='<col-md-6'>
+    <h3>Delete this store
+    <form action="/stores" method="post">
+      <input type="hidden" name='_method' value="delete">
+      <input id="id" name="id" type="hidden" value="<%=@store.id%>">
+      <button class="btn btn-warning btn-xs">Delete</button>
+    </h3>
+    </form>
+  </div>
+</div>
+<hr>
+
+
+
+<br>
+
+<h3><%=@store.name()%> has the following brands available:</h3>
+
+<ul>
+  <% @store.brands.each() do |brand|%>
+    <li><a href='/brands/<%=brand.id()%>'><%=brand.name%></a></li>
+  <% end %>
+</ul>
+
+<hr>
+
+<% if @brands.length>0 %>
+  <div class="text-left">
+    <h3>Add an existing brand to <%=@store.name()%></h3>
+    <form action='/brand2' method='post'>
+      <select id='brand_id' name='brand_id' type='text'>
+        <% @brands.each() do |brand| %>
+          <option value="<%= brand.id()%>"> <%= brand.name() %> </option>
+        <% end %>
+      </select>
+      <input type='hidden' name='self_id' id='self_id' value='<%=@store.id%>'>
+      <button class='btn btn-info btn-cons' action='submit'>Submit</button>
+    </form>
+  </div>
+<% else %>
+  <h3><a href='/'>Add a brand</a></h3>
+<% end %>
+
+<hr>

@@ -1,1 +1,55 @@
 <h1>Welcome to Shoe Distribution</h1>
+
+<br>
+<br>
+
+<h3>Available Brands</h3>
+<ul>
+  <%@brands.each() do |brand|%>
+    <li>
+      <a href='/brands/<%=brand.id%>'>
+        <%=brand.name%>
+      </a>
+    </li>
+  <%end%>
+</ul>
+
+<hr>
+
+<h3>Add Brand</h3>
+<form action='/brands' method='post'>
+  <label for='name'>Name of brand</label>
+  <input id='name' name='name' type='text'>
+  <button type='submit'>Add brand</button>
+</form>
+
+<hr>
+
+<h3>Available Stores</h3>
+<ul>
+  <%@stores.each() do |store|%>
+    <li>
+      <a href='/stores/<%=store.id%>'>
+        <%=store.name%>
+      </a>
+    </li>
+  <%end%>
+</ul>
+
+<hr>
+<h3>Add Store</h3>
+<div class="text-left">
+  <h3>Add a store</h3>
+  <form action='/stores' method='post'>
+    <label name='name'>Store name</label>
+    <input name='name' id='name' type='text'>
+    <br>
+    <label name='address'>Address</label>
+    <input name='address' id='address' type='text'>
+    <br>
+    <label name='phone'>Phone number</label>
+    <input name='phone' id='phone' type='number'>
+    <br>
+    <button class='btn btn-info btn-cons' action='submit'>Submit</button>
+  </form>
+</div>
